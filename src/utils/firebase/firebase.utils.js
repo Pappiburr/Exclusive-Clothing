@@ -1,13 +1,14 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { 
+    getAuth,  
+    signInWithPopup, 
+    GoogleAuthProvider,
+    createUserWithEmailAndPassword, 
+} from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyClExQnw8C7oJW0yvog8GkkkKRMiSOMVhw",
   authDomain: "exclusive-clothing-db.firebaseapp.com",
@@ -33,11 +34,10 @@ export const db = getFirestore();
 
 
 export const createUserDocumentFromAuth = async (userAuth) => {
-const userDocRef = doc(db, 'users', userAuth.uid);
-const userDocSnap = await getDoc(userDocRef);
+    if(!userAuth) return;
+    const userDocRef = doc(db, 'users', userAuth.uid);
+    const userDocSnap = await getDoc(userDocRef);
 
-console.log(userDocSnap);
-console.log(userDocSnap.exists());
 if(!userDocSnap.exists()){
     const {displayName, email} = userAuth;
     const createdAt = new Date();
@@ -52,9 +52,14 @@ if(!userDocSnap.exists()){
         console.log('Error creating user', error.message);
     }
 }
-else {
-    return userDocRef
+    return userDocRef;
 }
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+    if(!email || !password) return;
+
+    return await createUserWithEmailAndPassword(auth, email, password);
 }
+
+
 
 
