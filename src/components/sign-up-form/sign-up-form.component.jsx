@@ -11,7 +11,9 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword} = formFields;
+
     console.log(formFields);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if(password !== confirmPassword){
@@ -23,7 +25,7 @@ const SignUpForm = () => {
             await createAuthUserWithEmailAndPassword(email, password);
             setFormFields(defaultFormFields);
         }catch(error){
-            console.log('Error creating user', error.message);
+            console.log('Error Creation encountered an error', error.message);
         }
     }
     const handleChange = (e) => {
