@@ -12,15 +12,10 @@ const Authentication = () => {
     return (
         <div> 
             <div>
-            <h1>Sign In</h1>
-                <button onClick={logGoogleUser}>Sign in with Google</button>
+            <h1>Sign In Page</h1>
                 < SignInForm/>
-            </div>
-            <div>
-                <h1>Sign Up</h1>
-                <button onClick={logGoogleUser}>Sign in with Google</button>
                 < SignUpForm/>
-                </div>
+            </div>
         </div> 
     )
 

@@ -7,4 +7,8 @@
     font-size: 38px;
     margin: 10px 0;
 }
-
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Adjust the value as needed */
+}
