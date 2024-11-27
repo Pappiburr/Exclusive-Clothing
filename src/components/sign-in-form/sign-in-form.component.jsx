@@ -34,7 +34,19 @@ const SignInForm = () => {
             console.log(response);
             resetFormFields();
         } catch (error) {
-            console.error('Error signing in', error);
+           switch (error.code)
+              {
+                case 'auth/user-not-found':
+                     alert('User not found');
+                     break;
+                 case 'auth/wrong-password':
+                      alert('Wrong password');
+                      break;
+                 default:
+                      alert('An error occurred');
+                      break;
+              }
+           console.log('Error encountered an error', error.message);
         }
     };
     const handleChange = (e) => {
@@ -72,7 +84,7 @@ const SignInForm = () => {
             />
             <div className="buttons-container">
                 <Button type="signIn">Sign In</Button>
-                <Button buttonType="google" onClick={signInWithGoogle}>Sign In With Google</Button>
+                <Button type="button" buttonType="google" onClick={signInWithGoogle}>Sign In With Google</Button>
             </div>
             </form>
             </div>
