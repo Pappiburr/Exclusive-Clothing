@@ -1,8 +1,8 @@
 import {useState}  from 'react';
 import Button from '../button/button.component';
-import { createAuthUserWithEmailAndPassword , createUserDocumentFromAuth} from '../../utils/firebase/firebase.utils';
+import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
-import './sign-In-form.styles.scss';
+import './sign-in-form.styles.scss';
 const defaultFormFields = {
     email: '',
     password: '',
@@ -10,7 +10,7 @@ const defaultFormFields = {
 
 const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
-    const {displayName, email, password, confirmPassword} = formFields;
+    const { email, password, } = formFields;
 
     console.log(formFields);
 
@@ -20,23 +20,15 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(password !== confirmPassword){
-            alert('Passwords do not match');
-            return;
-        }
+      
 
         try{
-           const { user } = await createAuthUserWithEmailAndPassword(email, password);
-            setFormFields(defaultFormFields);
-            await createUserDocumentFromAuth(user, {displayName});
+  
             resetFormFields();
-        }catch(error){
-            if (error.code === 'auth/email-already-in-use'){
-                alert('Email already in use');
-            }
-            console.log('Error Creation encountered an error', error.message);
+        } catch (error) {
+            console.error('Error signing in', error);
         }
-    }
+    };
     const handleChange = (e) => {
         const {name, value} = e.target;
 
@@ -45,18 +37,11 @@ const SignInForm = () => {
 
     return (
         <div className="sign-In-container" >
-            <h2>Don't have an Account?</h2>
-           <span>Sign Up With Your Email</span>
+            <h2>Already have an account?</h2>
+           <span>Sign In With Your Email</span>
            <form onSubmit={handleSubmit}>
             
-            <FormInput 
-            label="Display Name"
-            type="text"
-            required 
-            onChange={handleChange} 
-            name="displayName"
-            value={displayName}
-              />
+            
 
             
             <FormInput
@@ -78,20 +63,11 @@ const SignInForm = () => {
             value={password}
             />
 
-          
-            <FormInput
-            label="Confirm Password"
-            type="password" 
-            required 
-            onChange={handleChange}
-            name="confirmPassword"
-            value={confirmPassword}
-            />
-
-            <Button type="submit">Sign Up</Button>
+            <Button type="signIn">Sign In</Button>
             </form>
             </div>
     )
 };
+
 
 export default SignInForm;
