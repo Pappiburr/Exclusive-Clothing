@@ -32,12 +32,15 @@ export const CartProvider = ({children}) => {
 
     const addItemToCart = (productToAdd) => {
         setCartItems(addCartItem(cartItems, productToAdd));
-
     }
 
-
-
-    const value = {isCartOpen, setIsCartOpen};
+    const value = {
+        isCartOpen, 
+        setIsCartOpen, 
+        cartItems,
+        addItemToCart  
+    };
+    console.log('Current Cart Items:', cartItems)
     return (
         <CartContext.Provider value={value}>{children}</CartContext.Provider>
     )
