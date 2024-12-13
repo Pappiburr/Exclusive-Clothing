@@ -11,14 +11,14 @@ const CartDropdown = () => {
     const navigate = useNavigate();
 
     return(
-        <div className='cart-dropdown-container'>
-            <div className='cart-items'>
+        <CartDropdownContainer>
+            <CartItems>
            {cartItems.map((item) => (
               <CartItem key={item.id} cartItem={item}/>))}
-            </div>
+            </CartItems>
             <Button buttonType='' onClick={() => navigate('/checkout')}>Checkout</Button>
                 
-        </div>
+        </CartDropdownContainer>
     );
 }
 
