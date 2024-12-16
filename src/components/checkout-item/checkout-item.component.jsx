@@ -26,7 +26,7 @@ const CheckoutItem = ({ cartItem }) => {
                     &#10095;
                 </Arrow>
                 </Quantity>
-            <span className='price'>${price}</span>
+            <BaseSpan>${price}</BaseSpan>
             <RemoveButton onClick={handleClearItem}> 
              
                 &#10005;
