@@ -1,4 +1,7 @@
-.directory-item-container {
+import styled from 'styled-components';
+
+
+    export const DirectoryItemContainer = styled.div`
     min-width: 30%;
     height: 240px;
     flex: 1 1 auto;
@@ -13,8 +16,6 @@
     font-weight: 400;
     font-style: normal;
   
-      
-
     &:hover {
         cursor: pointer;
 
@@ -41,7 +42,11 @@
         margin-left: 7.5px;
     }
 
-    .background-image {
+
+    `
+
+
+    export const BackgroundImage = styled.div`
         width: 100%;
         height: 100%;
         background-size: cover;
@@ -49,10 +54,12 @@
         background-repeat: no-repeat;
         // Add initial transition state
         transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
-    }
 
-    .directory-item-body {
-        height: 90px;
+    `
+
+
+    export const DirectoryItemBody = styled.div`
+     height: 90px;
         padding: 0 25px;
         display: flex;
         flex-direction: column;
@@ -74,5 +81,6 @@
             font-weight: lighter;
             font-size: 16px;
         }
-    }
-}
+    
+    `
+

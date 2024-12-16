@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { CategoriesContext } from '../contexts/categories.context';
 import DirectoryItem from '../directory-item/directory-item.component';
-import './directory.styles.scss';
+import {DirectoryContainer} from'./directory.styles.jsx';
 
 const Directory = () => {
   const { categoriesMap } = useContext(CategoriesContext);
   
   return (
-    <div className="directory-container">
+    <DirectoryContainer>
       {categoriesMap && 
         Object.entries(categoriesMap).map(([title, items]) => (
           <DirectoryItem 
@@ -17,7 +17,7 @@ const Directory = () => {
           />
         ))
       }
-    </div>
+    </DirectoryContainer>
   );
 };
 export default Directory;
