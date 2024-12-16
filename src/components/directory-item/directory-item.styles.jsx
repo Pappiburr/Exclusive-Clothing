@@ -52,8 +52,7 @@ import styled from 'styled-components';
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        // Add initial transition state
-        transition: transform 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+       
 
     `
 
