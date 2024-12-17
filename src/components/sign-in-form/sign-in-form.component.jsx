@@ -1,6 +1,6 @@
 import {useState}  from 'react';
 import Button from '../button/button.component';
-import { createUserDocumentFromAuth ,SignInAuthUserWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
+import { SignInAuthUserWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
 import { signInWithGooglePopUp } from '../../utils/firebase/firebase.utils';
 import {SignInContainer, Title, ButtonsContainer}  from './sign-in-form.styles.jsx';
@@ -26,25 +26,23 @@ const SignInForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      
 
         try {
-            const { user } = await SignInAuthUserWithEmailAndPassword(email, password);
+            await SignInAuthUserWithEmailAndPassword(email, password);
             resetFormFields();
-          } catch (error) {
-           switch (error.code)
-              {
+        } catch (error) {
+            switch (error.code) {
                 case 'auth/user-not-found':
-                     alert('User not found');
-                     break;
-                 case 'auth/wrong-password':
-                      alert('Wrong password');
-                      break;
-                 default:
-                      alert('An error occurred');
-                      break;
-              }
-           console.log('Error encountered an error', error.message);
+                    alert('User not found');
+                    break;
+                case 'auth/wrong-password':
+                    alert('Wrong password');
+                    break;
+                default:
+                    console.log('Error signing in:', error.message);
+                    alert('An error occurred signing in');
+                    break;
+            }
         }
     };
     const handleChange = (e) => {

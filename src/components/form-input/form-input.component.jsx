@@ -1,4 +1,4 @@
-import {subColor,mainColor,FormInputLabel,Input, Group} from './form-input.styles.jsx';
+import {FormInputLabel,Input, Group} from './form-input.styles.jsx';
 
 const FormInput = ({label, ...otherProps}) => {
     return(
