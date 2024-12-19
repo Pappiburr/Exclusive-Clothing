@@ -14,6 +14,10 @@ export const  USER_ACTION_TYPES = {
 }
 
 
+const INITIAL_STATE = {
+  currentUser: null
+}
+
 const userReducer = (state,action) => {
 
 
@@ -30,10 +34,6 @@ const userReducer = (state,action) => {
       throw new Error(`Unhandled type ${type} in userReducer`);
   }
 
-}
-
-const INITIAL_STATE = {
-  currentUser: null
 }
 
 export const UserProvider = ({ children}) => {
