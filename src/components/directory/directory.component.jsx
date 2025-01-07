@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { CategoriesContext } from '../contexts/categories.context';
+import {useSelector} from 'react-redux';
+import { selectCategoriesMap } from '../../store/categories/category.selector.js';
 import DirectoryItem from '../directory-item/directory-item.component';
 import {DirectoryContainer} from'./directory.styles.jsx';
 
 const Directory = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useSelector(selectCategoriesMap)
   
   return (
     <DirectoryContainer>
