@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import {store} from './store/store';
 
 import App from './App';
-import { UserProvider } from './components/contexts/user.contexts';
 import { CategoriesProvider } from './components/contexts/categories.context';
 import { CartProvider} from './components/contexts/cart.context';
 
