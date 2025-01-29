@@ -28,3 +28,12 @@ export const NavLink = styled(Link)`
     padding: 10px 15px;
     cursor: pointer;
 `
+
+export const userName = styled.h2 `
+    height: 70px;
+    width: 100%;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+`

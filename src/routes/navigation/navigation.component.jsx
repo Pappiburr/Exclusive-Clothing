@@ -11,7 +11,7 @@ import { selectIsCartOpen } from '../../store/cart/cart.selector'
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
-import {NavigationContainer, LogoContainer, NavLinksContainer, NavLink} from './navigation.styles';
+import {NavigationContainer, LogoContainer, NavLinksContainer, NavLink, userName} from './navigation.styles';
 
 const Navigation = () => {
 
@@ -24,6 +24,16 @@ const isCartOpen = useSelector(selectIsCartOpen);
           <CrwnLogo className="logo" />
         </LogoContainer>
         <NavLinksContainer>
+        {
+             currentUser ? (
+                <NavLink to ='/profile'>
+             {currentUser.displayName}
+              </NavLink>
+             ) :
+             (
+             <p></p>
+            )
+          } 
           <NavLink to='/shop'>
             SHOP
           </NavLink>
@@ -31,15 +41,18 @@ const isCartOpen = useSelector(selectIsCartOpen);
           <NavLink to='/checkout'>
             CHECKOUT
           </NavLink>
+          
           { currentUser ? (
             <NavLink as='span' onClick={signOutUser}>
               SIGN OUT 
+             
             </NavLink>
           ) : (
             <NavLink to='/auth'>
               SIGN IN
             </NavLink>
           )}
+         
           <CartIcon/>
         </NavLinksContainer>
         {isCartOpen && <CartDropdown />}
