@@ -1,8 +1,10 @@
-import {useState}  from 'react';
+import {useState, FormEvent, ChangeEvent}  from 'react';
+import { AuthError, AuthErrorCodes} from 'firebase/auth';
+import { useDispatch } from 'react-redux';  
+import { signUpStart } from '../../store/user/user.action';
 import Button from '../button/button.component';
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
-import {SignUpContainer ,Title} from './sign-up-form.styles.jsx';
+import {SignUpContainer ,Title} from './sign-up-form.styles.js';
 const defaultFormFields = {
     displayName: '',
     email: '',
@@ -11,33 +13,34 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+    const dispatch = useDispatch();
     const [formFields, setFormFields] = useState(defaultFormFields);
     const {displayName, email, password, confirmPassword} = formFields;
+
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
     };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         if(password !== confirmPassword){
             alert('Passwords do not match');
             return;
         }
 
-        try{
-           const { user } = await createAuthUserWithEmailAndPassword(email, password);
-            setFormFields(defaultFormFields);
-            await createUserDocumentFromAuth(user, {displayName});
+        try {
+            dispatch(signUpStart(email, password, displayName));
             resetFormFields();
-        }catch(error){
-            if (error.code === 'auth/email-already-in-use'){
+        } catch(error) {
+            if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS){
                 alert('Email already in use');
+            } else {
+                console.log('Error Creation encountered an error', error);
             }
-            console.log('Error Creation encountered an error', error.message);
         }
     }
-    const handleChange = (e) => {
-        const {name, value} = e.target;
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const {name, value} = event.target;
 
         setFormFields({...formFields, [name]:value});
     };
