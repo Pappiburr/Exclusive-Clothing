@@ -1,10 +1,11 @@
 import { CardElement , useStripe, useElements} from "@stripe/react-stripe-js";
-import { PaymentFormContainer,FormContainer } from "./payment-form.styles";
-import { useState } from "react";
+import { StripeCardElement } from "@stripe/stripe-js";
+import { PaymentFormContainer,FormContainer, PaymentButton } from "./payment-form.styles";
+import { useState, FormEvent } from "react";
 import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cart.selector";
 import { selectCurrentUser } from '../../store/user/user.selector';
-import Button  from "../button/button.component";
+
 
 
 const PaymentForm = () => {
@@ -12,9 +13,9 @@ const PaymentForm = () => {
     const elements = useElements();
     const amount = useSelector(selectCartTotal);
     const currentUser = useSelector(selectCurrentUser);
-    const [isProcessingPayment, setIsProcessingPayment] =useState(false);
+    const [isProcessingPayment, setIsProcessingPayment] = useState(false);
     
-    const paymentHandler = async(e) => {
+    const paymentHandler = async(e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
         if(!stripe || !elements ){
@@ -30,15 +31,18 @@ const PaymentForm = () => {
             body: JSON.stringify({ amount: amount * 100}),
         }).then(res => res.json());
 
-        const {paymentIntent:{client_secret},
+        const {
+            paymentIntent:{client_secret},
     } = response;
 
+const ifValidCardElement = (card: StripeCardElement | null): card is StripeCardElement => card !== null;
 
-
+const cardDetails = elements.getElement(CardElement);
+if(!ifValidCardElement(cardDetails)) return;
 
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
         payment_method: {
-            card: elements.getElement(CardElement),
+            card: cardDetails,
             billing_details: {
                 name: currentUser ? currentUser.displayName : 'guest',
             }
@@ -61,9 +65,9 @@ const PaymentForm = () => {
             <FormContainer onSubmit={paymentHandler}>
                 <h2> Credit Card Payment:</h2>
                 <CardElement/>
-                <Button disabled={isProcessingPayment} buttonType='payment'>  
+                <PaymentButton disabled={isProcessingPayment} >  
                     Pay Now
-                </Button>
+                </PaymentButton>
             </FormContainer>
         </PaymentFormContainer>
     )

@@ -1,0 +1,25 @@
+import { CategoryItem } from "../categories/category.types";
+
+export enum CART_ACTION_TYPES  {
+    SET_CART_ITEMS = 'cart/SET_CART_ITEMS',
+    SET_IS_CART_OPEN= 'cart/SET_IS_CART_OPEN', 
+    SET_CART_COUNT= 'cart/SET_CART_COUNT',
+    SET_CART_TOTAL= 'cart/SET_CART_TOTAL',
+    SET_ADD_ITEM_TO_CART= 'cart/SET_ADD_ITEM_TO_CART',
+    SET_REMOVE_ITEM_FROM_CART= 'cart/SET_REMOVE_ITEM_FROM_CART', 
+    SET_CLEAR_ITEM_FROM_CART= 'cart/SET_CLEAR_ITEM_FROM_CART',
+    UPDATE_CART_ITEMCOUNT_TOTAL= 'cart/UPDATE_CART_ITEMCOUNT_TOTAL'
+};
+
+export type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+  quantity: number;
+}
+
+export type CartState = {
+  readonly isCartOpen: boolean;
+  readonly cartItems: CartItem[];
+}
