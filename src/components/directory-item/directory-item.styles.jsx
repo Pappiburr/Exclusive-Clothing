@@ -11,7 +11,7 @@ import styled from 'styled-components';
     border: 1px solid black;
     margin: 0 7.5px 15px;
     overflow: hidden;
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto Slab", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;

@@ -42,6 +42,7 @@ export const CartItems = styled.div`
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    color:black;
 `
 
 

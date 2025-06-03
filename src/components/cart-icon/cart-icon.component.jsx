@@ -1,10 +1,14 @@
 import {useDispatch, useSelector} from 'react-redux';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBagShopping } from '@fortawesome/free-solid-svg-icons'
 import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector.js'
 import { setIsCartOpen} from '../../store/cart/cart.action.js'
 
-import {ReactComponent as ShoppingIcon} from '../../assets/shopping-bag.svg';
+
 import {CartIconContainer, ItemCount} from './cart-icon.styles.jsx';
+
+
+
 
 const CartIcon = () => {
     const dispatch = useDispatch();
@@ -14,8 +18,10 @@ const CartIcon = () => {
     
     return(
         <CartIconContainer onClick={toggleIsCartOpen}>
-            <ShoppingIcon className="shop-icon"/>
+           
+           <FontAwesomeIcon icon={faBagShopping} style={{ fontSize: '3rem', color: "#36454f"}} />
             <ItemCount>{cartCount}</ItemCount>
+            
         </CartIconContainer>
     )
 };

@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.ant-carousel {
+padding: 1.5rem;
+}
+
+
+
+.ant-carousel .slick-arrow {
+  color: #2563eb;
+}
+
+.ant-carousel .slick-arrow .slick-prev {
+  color: #2563eb;
+
+}
+
+.ant-carousel .slick-arrow .slick-next {
+  color: #2563eb;
+
+}
+
