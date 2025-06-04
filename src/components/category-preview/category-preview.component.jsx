@@ -14,7 +14,7 @@ const CategoryPreview = ({title, products}) => {
             </Title>
             
             <Carousel
-                arrows
+                arrows={true}
                 autoplay
                 autoplaySpeed={3000}
                 slidesToShow={4}

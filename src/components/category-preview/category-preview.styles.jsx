@@ -1,41 +1,60 @@
 import styled from 'styled-components';
-
+import { BrandBlack, BrandPrimary, BrandSecondary, BrandText } from '../../utils/colors/color.styles';
 export const CategoryPreviewContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  padding-bottom: 50px;
   width: 100%;
   overflow: hidden;
   position: relative;
+  background-color: ${BrandSecondary};
 
 .ant-carousel {
-padding 3rem;
-color:white;
-border-style: solid;
-border-color: white;
-border-width: 1px;
-},
-
-
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: ${BrandText};
+  background-color: ${BrandSecondary};
+  border-style: solid;
+  border-color: ${BrandText};
+  border-width: 1px;
+  
+}
 
 .ant-carousel .slick-arrow {
-  color: #white;
-  width: 1%;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex !important;
+  align-items: center;
   justify-content: center;
-  align-content:center;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 17%;
-},
+  background-color: rgba(18, 80, 88, 0.5);
+  border-radius: 50%;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 1 !important;
+  
+}
 
-.ant-carousel .slick-arrow .slick-prev {
-  color: #2563eb;
+.ant-carousel .slick-arrow::before {
+  content: '';
+  visibility: none;
 
-},
+}
 
-.ant-carousel .slick-arrow .slick-next {
-  color: #2563eb;
+.ant-carousel .slick-prev {
+ color: rgba(0, 0, 0, 0);
+ padding-top: 30px;
 
-},
+} 
+
+.ant-carousel .slick-next {
+color: rgba(0, 0, 0, 0);
+  right: 10px;
+}
 
 `
 
@@ -44,7 +63,7 @@ export const Title = styled.h2`
   margin-bottom: 25px;
   cursor: pointer;
   text-align: center;
-  color:white;
+  color: ${BrandText};
     
 `
 

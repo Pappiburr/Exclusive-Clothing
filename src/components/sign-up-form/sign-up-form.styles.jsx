@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { BrandBlack, BrandPrimary, BrandSecondary, BrandText } from '../../utils/colors/color.styles'
 
 export const SignUpContainer = styled.div`
-display: flex;
+display: inline-flex;
 flex-direction: column;
-width: 380px;
+padding: 30px;
+background-color: ${BrandText};
 `
 export const Title = styled.h2 `
 

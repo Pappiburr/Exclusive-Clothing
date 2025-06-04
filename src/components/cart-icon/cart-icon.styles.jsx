@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BrandBlack, BrandPrimary, BrandSecondary, Brandtext } from '../../utils/colors/color.styles';
 
 export const CartIconContainer = styled.div`
 width: 45px;
@@ -26,7 +27,7 @@ export const CartDropDownContainer = styled.div`
     flex-direction: column;
     padding: 20px;
     border: 1px solid black;
-    background-color: white;
+    background-color: ${BrandSecondary};
     top: 90px;
     right: 40px;
     z-index: 5;

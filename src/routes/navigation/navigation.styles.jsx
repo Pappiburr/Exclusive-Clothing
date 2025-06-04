@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import { BrandPrimary,BrandSecondary,BrandText, BrandBlack } from '../../utils/colors/color.styles';
 import { Link } from 'react-router-dom';
 
 export const NavigationContainer = styled.div` 
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid black;
-    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+    border-color: ${BrandText};
+    background-color:${BrandPrimary};
 ` 
 
 
@@ -30,9 +32,11 @@ export const NavLinksContainer = styled.div`
 export const NavLink = styled(Link)`
     padding: 10px 15px;
     cursor: pointer;
-    color: white;
+   color:  ${BrandText};
     &:visited {
-       color: black;
+       color: ${BrandText};
+
+;
     }
 
 `
