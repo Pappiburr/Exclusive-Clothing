@@ -8,7 +8,7 @@ import App from './App';
 import {store , persistor} from './store/store';
 import {stripePromise} from '../src/utils/stripe/stripe.utils'
 
-import './index.scss';
+import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 

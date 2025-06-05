@@ -8,8 +8,8 @@ const DirectoryItem = ({ title, imageUrl }) => (
             }}
         />
         <DirectoryItemBody>
-            <h2>{title}</h2>
-            <Link to={`/shop/${title.toLowerCase()}`}>Shop Now</Link>
+            <h2>{`${title.toUpperCase()}`}</h2>
+            <p><Link to={`/shop/${title.toLowerCase()}`}>Shop Now</Link></p>
         </DirectoryItemBody>
     </DirectoryItemContainer>  
 );

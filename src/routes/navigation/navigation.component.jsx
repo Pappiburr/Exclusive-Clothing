@@ -7,6 +7,7 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 import CartIcon from '../../components/cart-icon/cart-icon.component';
 import CartDropdown from '../../components/cart-dropdown/cart-dropdown.components';
+import Searchbar from '../../components/search-bar/search-bar.component';
 import { selectIsCartOpen } from '../../store/cart/cart.selector'
 import { selectCurrentUser } from '../../store/user/user.selector';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
@@ -23,6 +24,9 @@ const isCartOpen = useSelector(selectIsCartOpen);
         <LogoContainer to='/'>
           <CrwnLogo className="logo" />
         </LogoContainer>
+        <Searchbar>
+            
+          </Searchbar>
         <NavLinksContainer>
         {
              currentUser ? (
