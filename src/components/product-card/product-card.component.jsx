@@ -1,9 +1,9 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {selectCartItems} from '../../store/cart/cart.selector.js';
 import {addItemToCart} from '../../store/cart/cart.action.js';
-
+import {BrandPrimary} from '../../utils/colors/color.styles.jsx';
 import {ProductCardContainer} from './product-card.styles.jsx';
-import { Button} from 'antd';
+import { Button, ConfigProvider} from 'antd';
 
 
 const ProductCard = ({product}) => {
@@ -19,7 +19,17 @@ const ProductCard = ({product}) => {
             <span className="name">{name}</span>
             <span className="price">{price}</span>
         </div>
-        <Button  color="default"  variant="solid" onClick={addProductToCart}>Add To Cart</Button>
+        <ConfigProvider
+            theme={{
+                token: {
+                    colorPrimary: BrandPrimary, 
+                },
+            }}
+        >
+            <Button type="primary" onClick={addProductToCart}>Add To Cart</Button>
+        </ConfigProvider>
+        
+      
         </ProductCardContainer>
     );
 }

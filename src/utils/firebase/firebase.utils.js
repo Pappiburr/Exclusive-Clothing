@@ -21,15 +21,33 @@ import {
     getDocs
 } from "firebase/firestore";
 
+// Validate required environment variables
+const requiredEnvVars = [
+  'REACT_APP_FIREBASE_API_KEY',
+  'REACT_APP_FIREBASE_AUTH_DOMAIN',
+  'REACT_APP_FIREBASE_PROJECT_ID',
+  'REACT_APP_FIREBASE_STORAGE_BUCKET',
+  'REACT_APP_FIREBASE_MESSAGING_SENDER_ID',
+  'REACT_APP_FIREBASE_APP_ID'
+];
+
+const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
+
+if (missingEnvVars.length > 0) {
+  throw new Error(
+    `Missing required environment variables: ${missingEnvVars.join(', ')}\n` +
+    'Please check your .env file and ensure all Firebase configuration variables are set.'
+  );
+}
 
 const firebaseConfig = {
-  apiKey: "AIzaSyClExQnw8C7oJW0yvog8GkkkKRMiSOMVhw",
-  authDomain: "exclusive-clothing-db.firebaseapp.com",
-  projectId: "exclusive-clothing-db",
-  storageBucket: "exclusive-clothing-db.firebasestorage.app",
-  messagingSenderId: "816936936826",
-  appId: "1:816936936826:web:d3d9cb026b9974060ca2c3",
-  measurementId: "G-T2TJYHXKFE"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 const firebaseApp = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();

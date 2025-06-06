@@ -1,4 +1,4 @@
-import styled from "styled-components";
+
 // Teal
 export const BrandPrimary = '#014144';
 // Crimson

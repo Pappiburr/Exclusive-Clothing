@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BrandBlack, BrandPrimary, BrandSecondary, Brandtext } from '../../utils/colors/color.styles';
+import { BrandBlack, BrandPrimary, BrandSecondary, BrandText } from '../../utils/colors/color.styles';
 
 export const CartIconContainer = styled.div`
 width: 45px;
@@ -9,15 +9,18 @@ display: flex;
 align-items: center;
 justify-content: center;
 cursor: pointer;
+color:${BrandText};
+border-outline: 1px solid ${BrandPrimary};
 `
 
 
 
 export const ItemCount = styled.span`
     position: absolute;
-    font-size: 10px;
+    margin-top: 30px;
+    font-size: 13px;
     font-weight: bold;
-    bottom: 12px;
+    bottom: 7px;
 `
 export const CartDropDownContainer = styled.div`
     position: absolute;

@@ -19,7 +19,7 @@ const CartIcon = () => {
     return(
         <CartIconContainer onClick={toggleIsCartOpen}>
            
-           <FontAwesomeIcon icon={faBagShopping} style={{ fontSize: '3rem', color: "#36454f"}} />
+           <FontAwesomeIcon icon={faBagShopping} style={{ fontSize: '3rem', color: "#91161A"}} />
             <ItemCount>{cartCount}</ItemCount>
             
         </CartIconContainer>
